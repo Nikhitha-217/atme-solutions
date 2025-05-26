@@ -7,68 +7,57 @@ const DigitalMarketing = () => {
     {
       title: "Facebook Ads",
       description: "Grow your audience and sales with targeted Facebook ads.",
-      icon: "📱",
-      color: "from-blue-400 to-blue-600"
+      icon: "📱"
     },
     {
       title: "Instagram Ads", 
       description: "Engage visually and convert with high-performing Instagram campaigns.",
-      icon: "📸",
-      color: "from-pink-400 to-pink-600"
+      icon: "📸"
     },
     {
       title: "WhatsApp Ads",
       description: "Connect instantly with customers using effective WhatsApp advertising.",
-      icon: "💬",
-      color: "from-green-400 to-green-600"
+      icon: "💬"
     },
     {
       title: "LinkedIn Ads",
       description: "Reach professionals and B2B clients with LinkedIn ad solutions.",
-      icon: "💼",
-      color: "from-blue-500 to-blue-700"
+      icon: "💼"
     },
     {
       title: "Twitter Ads",
       description: "Boost brand awareness fast with powerful Twitter ad strategies.", 
-      icon: "🐦",
-      color: "from-sky-400 to-sky-600"
+      icon: "🐦"
     },
     {
       title: "SEO, SMM",
       description: "Rank higher, grow faster with SEO and social media.",
-      icon: "📈",
-      color: "from-purple-400 to-purple-600"
+      icon: "📈"
     },
     {
       title: "Website Designing",
       description: "Launch your digital presence with custom websites and hosting.",
-      icon: "💻",
-      color: "from-indigo-400 to-indigo-600"
+      icon: "💻"
     },
     {
       title: "Google Ads",
       description: "Maximize ROI with Google Ads: search, display, and video.",
-      icon: "🔍",
-      color: "from-red-400 to-red-600"
+      icon: "🔍"
     },
     {
       title: "YouTube Ads",
       description: "Get more YouTube subscribers and views with expert ad campaigns.",
-      icon: "📺",
-      color: "from-red-500 to-red-700"
+      icon: "📺"
     },
     {
       title: "Email Marketing",
       description: "Drive conversions with engaging and targeted email campaigns.",
-      icon: "📧",
-      color: "from-teal-400 to-teal-600"
+      icon: "📧"
     },
     {
       title: "WhatsApp Marketing",
       description: "Deliver promotions directly with impactful WhatsApp marketing tactics.",
-      icon: "📱",
-      color: "from-green-500 to-green-700"
+      icon: "📱"
     }
   ];
 
@@ -114,50 +103,15 @@ const DigitalMarketing = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <div key={index} className="group">
-                <div className={`bg-gradient-to-br ${service.color} rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-white h-full`}>
+                <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 h-full">
                   <div className="text-center">
                     <div className="text-4xl mb-4">{service.icon}</div>
-                    <h3 className="text-lg font-bold mb-3">{service.title}</h3>
-                    <p className="text-sm leading-relaxed opacity-90">{service.description}</p>
+                    <h3 className="text-lg font-bold mb-3 text-gray-900">{service.title}</h3>
+                    <p className="text-sm leading-relaxed text-gray-600">{service.description}</p>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Purpose Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">OUR PURPOSE</h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                At ATME, we are passionate about transforming businesses and careers through cutting-edge digital marketing solutions and comprehensive IT training programs. Our mission is to bridge the gap between talent and technology.
-              </p>
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🎯</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">Our Vision</h3>
-                  <p className="text-gray-600">Empowering digital transformation</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-orange-100 to-yellow-100 p-8 rounded-xl">
-              <h3 className="text-2xl font-bold text-orange-600 mb-4">OUR PATH</h3>
-              <p className="text-gray-700 mb-4">
-                We deliver results-driven digital marketing strategies and provide industry-relevant IT training that prepares professionals for tomorrow's challenges.
-              </p>
-              <div className="bg-white p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Our Testimonials</h4>
-                <blockquote className="italic text-gray-600">
-                  "ATME Solutions transformed our digital presence and equipped our team with essential IT skills."
-                </blockquote>
-              </div>
-            </div>
           </div>
         </div>
       </section>

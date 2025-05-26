@@ -12,9 +12,9 @@ const Footer = () => {
             <img 
               src="/lovable-uploads/d492b239-17b9-416a-bab5-aa8327b2a4d5.png" 
               alt="Atme Solutions" 
-              className="h-24 w-auto mb-4"
+              className="h-32 w-auto mb-4"
             />
-            <p className="text-gray-700 mb-6 leading-relaxed font-bold italic">
+            <p className="text-gray-700 mb-6 leading-relaxed font-bold italic text-lg">
               "Turn your Ambitions into Achievements with us"
             </p>
             <div>

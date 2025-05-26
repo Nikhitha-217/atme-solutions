@@ -51,25 +51,25 @@ const About = () => {
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-16 bg-white">
+      {/* Main Content with Blue Background */}
+      <section className="py-16" style={{ backgroundColor: '#4285F4' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Empowering Digital Future</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-4">Empowering Digital Future</h2>
+            <p className="text-xl text-white max-w-3xl mx-auto opacity-90">
               Bridging Talent and Technology to Transform Tomorrow.
             </p>
           </div>
           
           <div className="mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Who We Are:</h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <h3 className="text-2xl font-bold text-white mb-6">Who We Are:</h3>
+            <p className="text-lg text-white leading-relaxed opacity-90">
               ATME Solutions is a dynamic technology partner committed to empowering businesses and individuals for the digital future. With a forward-thinking approach, we combine the power of top-tier talent and innovative digital strategies to drive success in a tech-driven world.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-xl">
+            <div className="bg-white p-8 rounded-xl shadow-lg">
               <h4 className="text-2xl font-bold text-orange-600 mb-4">IT Staffing & Training:</h4>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
@@ -87,7 +87,7 @@ const About = () => {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl">
+            <div className="bg-white p-8 rounded-xl shadow-lg">
               <h4 className="text-2xl font-bold text-blue-600 mb-4">Digital Marketing</h4>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">

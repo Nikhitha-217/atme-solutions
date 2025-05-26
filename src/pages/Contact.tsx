@@ -56,29 +56,15 @@ const Contact = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-white text-center">
-            <h1 className="text-5xl font-bold mb-6">What will you get from ATME?</h1>
+            <h1 className="text-5xl font-bold mb-6">Get In Touch With Us</h1>
             <div className="bg-white text-gray-800 p-8 rounded-xl max-w-4xl mx-auto shadow-lg">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="text-left">
-                  <div className="bg-orange-100 p-4 rounded-lg mb-4">
-                    <h3 className="font-bold text-orange-600 mb-2">Step 01</h3>
-                    <p className="text-sm text-gray-700">
-                      Choose 75% up to listen about over experts IT training programs and digital marketing services. Our innovative talent is built to grow our beyond and enhance professional growth. In business experience, agility, from to help you achieve your highest potential progress with cutting-edge solutions.
-                    </p>
-                  </div>
-                  <div className="bg-blue-100 p-4 rounded-lg">
-                    <h3 className="font-bold text-blue-600 mb-2">Step 02</h3>
-                    <p className="text-sm text-gray-700">
-                      Spend in your professional training programs and start earning your ambitions into real achievements. While allows us to deliver top-notch user with, adaptable with expert technologies and business-focused solutions to help you achieve based visibility, expertise, leads, and close your business forward.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <div className="w-64 h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
-                    <div className="text-8xl">🎯</div>
-                  </div>
-                </div>
-              </div>
+              <div className="text-6xl mb-6">📞</div>
+              <blockquote className="text-2xl font-bold text-gray-800 mb-4">
+                "Ready to transform your digital presence? Let's connect and turn your vision into reality."
+              </blockquote>
+              <p className="text-lg text-gray-600">
+                Whether you need IT training or digital marketing solutions, we're here to help you succeed.
+              </p>
             </div>
           </div>
         </div>
