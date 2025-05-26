@@ -8,14 +8,14 @@ import { useToast } from '@/hooks/use-toast';
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
-    service: '',
-    message: ''
+    feedback: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -30,241 +30,143 @@ const Contact = () => {
       description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
     });
     setFormData({
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
-      service: '',
-      message: ''
+      feedback: ''
     });
   };
-
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      content: "123 Business Street, Tech City, TC 12345"
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      content: "+1 (555) 123-4567"
-    },
-    {
-      icon: Mail,
-      title: "Email Us",
-      content: "info@atmesolutions.com"
-    },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      content: "Mon-Fri: 9AM-6PM, Sat: 10AM-4PM"
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Get In <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Touch</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Ready to start your journey? Have questions about our courses or services? We're here to help you every step of the way.
-            </p>
+      {/* Banner Section */}
+      <section 
+        className="pt-20 pb-16 relative overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)',
+        }}
+      >
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full transform translate-x-32 -translate-y-32"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full transform -translate-x-16 translate-y-16"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-white text-center">
+            <h1 className="text-5xl font-bold mb-6">What will you get from ATME?</h1>
+            <div className="bg-white text-gray-800 p-8 rounded-xl max-w-4xl mx-auto shadow-lg">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="text-left">
+                  <div className="bg-orange-100 p-4 rounded-lg mb-4">
+                    <h3 className="font-bold text-orange-600 mb-2">Step 01</h3>
+                    <p className="text-sm text-gray-700">
+                      Choose 75% up to listen about over experts IT training programs and digital marketing services. Our innovative talent is built to grow our beyond and enhance professional growth. In business experience, agility, from to help you achieve your highest potential progress with cutting-edge solutions.
+                    </p>
+                  </div>
+                  <div className="bg-blue-100 p-4 rounded-lg">
+                    <h3 className="font-bold text-blue-600 mb-2">Step 02</h3>
+                    <p className="text-sm text-gray-700">
+                      Spend in your professional training programs and start earning your ambitions into real achievements. While allows us to deliver top-notch user with, adaptable with expert technologies and business-focused solutions to help you achieve based visibility, expertise, leads, and close your business forward.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <div className="w-64 h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center">
+                    <div className="text-8xl">🎯</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-20 bg-white">
+      {/* Contact Form Section */}
+      <section className="py-20 bg-gradient-to-r from-yellow-400 to-orange-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             
-            {/* Contact Form */}
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                      Interested In
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="web-development">Web Development</option>
-                      <option value="python">Python Programming</option>
-                      <option value="java">Java Development</option>
-                      <option value="data-science">Data Science</option>
-                      <option value="digital-marketing">Digital Marketing</option>
-                      <option value="seo">SEO Services</option>
-                      <option value="social-media">Social Media Marketing</option>
-                      <option value="branding">Branding & Design</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+            {/* GET IN TOUCH Form */}
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-8">GET IN TOUCH</h2>
+              <p className="text-lg text-gray-800 mb-8">
+                Whether you're curious about our services or need expert guidance, just reach out using the form below. We're always happy to assist!
+              </p>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleInputChange}
+                    placeholder="FIRST NAME"
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Tell us about your goals and how we can help you..."
+                    className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500 bg-white"
+                  />
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="LAST NAME"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500 bg-white"
                   />
                 </div>
                 
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="E-MAIL"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500 bg-white"
+                />
+                
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="PHONE NUMBER"
+                  className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500 bg-white"
+                />
+                
+                <textarea
+                  name="feedback"
+                  value={formData.feedback}
+                  onChange={handleInputChange}
+                  placeholder="FEEDBACK"
+                  rows={5}
+                  required
+                  className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-500 bg-white"
+                />
+                
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
                 >
-                  Send Message
+                  CONTACT US
                 </button>
               </form>
             </div>
 
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
-                <p className="text-gray-600 leading-relaxed mb-8">
-                  We're here to answer your questions and help you choose the right path for your career or business goals. 
-                  Reach out to us through any of the following channels.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <info.icon className="text-white" size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
-                      <p className="text-gray-600">{info.content}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Social Media */}
-              <div className="pt-8 border-t border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-4">Follow Us</h3>
-                <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition-colors duration-200">
-                    <Facebook size={20} />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-pink-600 rounded-lg flex items-center justify-center text-white hover:bg-pink-700 transition-colors duration-200">
-                    <Instagram size={20} />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition-colors duration-200">
-                    <Linkedin size={20} />
-                  </a>
-                  <a href="#" className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white hover:bg-red-700 transition-colors duration-200">
-                    <Youtube size={20} />
-                  </a>
-                </div>
-              </div>
-
-              {/* Map Placeholder */}
-              <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center">
+            {/* Location */}
+            <div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-8">📍 LOCATION</h2>
+              <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center mb-8">
                 <div className="text-center text-gray-500">
                   <MapPin size={48} className="mx-auto mb-2" />
-                  <p>Interactive Map Coming Soon</p>
-                  <p className="text-sm">123 Business Street, Tech City, TC 12345</p>
+                  <p className="font-semibold">Interactive Map</p>
+                  <p className="text-sm">Srinivasa Puram Colony, Road No. 2</p>
+                  <p className="text-sm">Vanasthalipuram, Hyderabad, Telangana</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600">Quick answers to common questions</p>
-          </div>
-
-          <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Do you offer flexible scheduling for working professionals?</h3>
-              <p className="text-gray-600">Yes! We offer weekend, evening, and intensive bootcamp schedules to accommodate working professionals.</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Are your courses suitable for complete beginners?</h3>
-              <p className="text-gray-600">Absolutely! Most of our courses are designed to take you from beginner to job-ready professional.</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">Do you provide job placement assistance?</h3>
-              <p className="text-gray-600">Yes, we have a dedicated career services team that helps with resume building, interview preparation, and job placement.</p>
-            </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-2">What's included in your digital marketing packages?</h3>
-              <p className="text-gray-600">Our packages include strategy development, implementation, content creation, campaign management, and detailed performance reporting.</p>
             </div>
           </div>
         </div>

@@ -17,7 +17,6 @@ const Navigation = () => {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Services', href: '/services', hasDropdown: true },
-    { name: 'Courses', href: '/courses' },
     { name: 'Contact', href: '/contact' },
   ];
 
