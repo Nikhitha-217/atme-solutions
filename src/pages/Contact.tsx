@@ -1,12 +1,17 @@
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Contact = () => {
   const { toast } = useToast();
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const map = useRef<mapboxgl.Map | null>(null);
+  const [mapboxToken, setMapboxToken] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,6 +19,41 @@ const Contact = () => {
     phone: '',
     feedback: ''
   });
+
+  // Company address coordinates (Hyderabad, Telangana)
+  const companyLocation: [number, number] = [78.4867, 17.3850];
+
+  useEffect(() => {
+    if (!mapContainer.current || !mapboxToken) return;
+
+    mapboxgl.accessToken = mapboxToken;
+    
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: companyLocation,
+      zoom: 14
+    });
+
+    // Add a marker for the company location
+    new mapboxgl.Marker({ color: '#EC4899' })
+      .setLngLat(companyLocation)
+      .setPopup(
+        new mapboxgl.Popup().setHTML(`
+          <div class="p-2">
+            <h3 class="font-bold">ATME Solutions</h3>
+            <p class="text-sm">Srinivasa Puram Colony, Road No. 2,<br>
+            Vanasthalipuram, Hyderabad, Telangana,<br>
+            INDIA - 500 070</p>
+          </div>
+        `)
+      )
+      .addTo(map.current);
+
+    return () => {
+      map.current?.remove();
+    };
+  }, [mapboxToken]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -58,9 +98,9 @@ const Contact = () => {
           <div className="text-white text-center">
             <h1 className="text-5xl font-bold mb-6">Get In Touch With Us</h1>
             <div className="bg-white text-gray-800 p-8 rounded-xl max-w-4xl mx-auto shadow-lg">
-              <div className="text-6xl mb-6">📞</div>
+              <div className="text-6xl mb-6">🤝</div>
               <blockquote className="text-2xl font-bold text-gray-800 mb-4">
-                "Ready to transform your digital presence? Let's connect and turn your vision into reality."
+                "Every great partnership begins with a conversation. Let's start building something amazing together."
               </blockquote>
               <p className="text-lg text-gray-600">
                 Whether you need IT training or digital marketing solutions, we're here to help you succeed.
@@ -142,15 +182,73 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Location */}
+            {/* Location and Map */}
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-8">📍 LOCATION</h2>
-              <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center mb-8">
-                <div className="text-center text-gray-500">
-                  <MapPin size={48} className="mx-auto mb-2" />
-                  <p className="font-semibold">Interactive Map</p>
-                  <p className="text-sm">Srinivasa Puram Colony, Road No. 2</p>
-                  <p className="text-sm">Vanasthalipuram, Hyderabad, Telangana</p>
+              
+              {/* Mapbox Token Input */}
+              {!mapboxToken && (
+                <div className="mb-6 p-4 bg-blue-100 rounded-lg">
+                  <p className="text-sm text-blue-800 mb-2">
+                    To display the interactive map, please enter your Mapbox public token:
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="Enter Mapbox public token"
+                    value={mapboxToken}
+                    onChange={(e) => setMapboxToken(e.target.value)}
+                    className="w-full px-3 py-2 rounded border focus:ring-2 focus:ring-blue-500"
+                  />
+                  <p className="text-xs text-blue-600 mt-1">
+                    Get your token at{' '}
+                    <a href="https://mapbox.com" target="_blank" rel="noopener noreferrer" className="underline">
+                      mapbox.com
+                    </a>
+                  </p>
+                </div>
+              )}
+
+              {/* Map Container */}
+              <div className="bg-gray-200 rounded-lg h-64 mb-6 overflow-hidden">
+                {mapboxToken ? (
+                  <div ref={mapContainer} className="w-full h-full" />
+                ) : (
+                  <div className="flex items-center justify-center h-full text-center text-gray-500">
+                    <div>
+                      <MapPin size={48} className="mx-auto mb-2" />
+                      <p className="font-semibold">Interactive Map</p>
+                      <p className="text-sm">Enter Mapbox token to view map</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Contact Information */}
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Contact Information</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <MapPin className="text-gray-600 mr-3 mt-1 flex-shrink-0" size={18} />
+                    <div className="text-gray-600">
+                      <p>Srinivasa Puram Colony, Road No. 2,</p>
+                      <p>Vanasthalipuram, Hyderabad, Telangana,</p>
+                      <p>INDIA - 500 070.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="text-gray-600 mr-3 flex-shrink-0" size={18} />
+                    <div className="text-gray-600">
+                      <p>info@atmesolutions.com</p>
+                      <p>atmesolutions2022@gmail.com</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="text-gray-600 mr-3 flex-shrink-0" size={18} />
+                    <div className="text-gray-600">
+                      <p>+91 84669 93320</p>
+                      <p>+91 7799480686 / 7 / 8</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
