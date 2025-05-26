@@ -20,41 +20,7 @@ const Contact = () => {
     feedback: ''
   });
 
-  // Company address coordinates (Hyderabad, Telangana)
-  const companyLocation: [number, number] = [78.4867, 17.3850];
-
-  useEffect(() => {
-    if (!mapContainer.current || !mapboxToken) return;
-
-    mapboxgl.accessToken = mapboxToken;
-    
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: companyLocation,
-      zoom: 14
-    });
-
-    // Add a marker for the company location
-    new mapboxgl.Marker({ color: '#EC4899' })
-      .setLngLat(companyLocation)
-      .setPopup(
-        new mapboxgl.Popup().setHTML(`
-          <div class="p-2">
-            <h3 class="font-bold">ATME Solutions</h3>
-            <p class="text-sm">Srinivasa Puram Colony, Road No. 2,<br>
-            Vanasthalipuram, Hyderabad, Telangana,<br>
-            INDIA - 500 070</p>
-          </div>
-        `)
-      )
-      .addTo(map.current);
-
-    return () => {
-      map.current?.remove();
-    };
-  }, [mapboxToken]);
-
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
